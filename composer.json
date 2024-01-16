@@ -1,0 +1,17 @@
+{
+  "name": "karolina/bank",
+  "description": "OOP Bank app CRUD",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Karolina\\Bank\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "admin",
+      "email": "admin@bank.crud.com"
+    }
+  ],
+  "require": {}
+}
