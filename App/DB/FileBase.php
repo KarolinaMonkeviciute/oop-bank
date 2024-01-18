@@ -8,7 +8,7 @@ class FileBase implements DataBase
 {
     private $file, $data, $index, $save = true;
 
-    public function construct($name){
+    public function __construct($name){
         $this->file = ROOT.'data/'.$name.'.json';
         $this->indexFile = ROOT.'data/'.$name.'-index.json';
 
@@ -20,7 +20,7 @@ class FileBase implements DataBase
         $this->index = json_decode(file_get_contents($this->indexFile));
     }
 
-    public function destruct(){
+    public function __destruct(){
         if($this->save){
             file_put_contents($this->file, json_encode($this->data));
             file_put_contents($this->indexFile, json_encode($this->index));

@@ -16,6 +16,10 @@ class App
 
     static private function router($url){
         $method = $_SERVER['REQUEST_METHOD'];
+
+        if($method == 'GET' && count($url) == 1 && $url[0] == 'accounts'){
+            return (new AccController)->index($_GET);
+        }
         if($method == 'GET' && count($url) == 1 && $url[0] == 'create'){
             return (new AccController)->create();
         }
@@ -35,5 +39,10 @@ class App
         $content = ob_get_clean();
         return $content;
 
+    }
+
+    static public function redirect($url){
+        header('Location: '.URL.'/'.$url);
+        return null;
     }
 }
