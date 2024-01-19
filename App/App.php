@@ -26,6 +26,15 @@ class App
         if($method == 'POST' && count($url) == 1 && $url[0] == 'store'){
             return (new AccController)->store($_POST);
         }
+        if($method == 'POST' && count($url) == 2 && $url[0] == 'destroy'){
+            return (new AccController)->destroy($url[1]);
+        }
+        if($method == 'GET' && count($url) == 2 && $url[0] == 'edit'){
+            return (new AccController)->edit($url[1]);
+        }
+        if($method == 'POST' && count($url) == 2 && $url[0] == 'update'){
+            return (new AccController)->update($url[1], $_POST);
+        }
 
         return '<h1>404<h1>';
     }

@@ -23,6 +23,7 @@
             </div>
         </li>
       <?php foreach ($accounts as $account) : ?>
+        <?php print_r($account); ?>
          <li class="list-group-item">
             <div class="container">
                 <div class="row">
@@ -42,7 +43,10 @@
                         <?= $account->balance; ?> EUR
                     </div>
                     <div class="col-2">
-                       
+                    <a href="<?= URL ?>/edit/<?= $account->id ?>" class="btn btn-warning mb-1">Pridėti</a>
+                        <form action="<?= URL ?>/destroy/<?= $account->id ?>" method="post">
+                            <button class="btn btn-danger">Ištrinti</button>
+                        </form>
                     </div>
                 </div>
             </div>
