@@ -3,6 +3,7 @@
 namespace Bank\App;
 
 use Bank\App\Controllers\AccController;
+use Bank\App\Message;
 
 class App
 {
@@ -48,6 +49,7 @@ class App
 
     static public function view($view, $data=[]){
         extract($data);
+        $msg = Message::get()->show();
         ob_start();
         require ROOT.'views/top.php';
         require ROOT."views/$view.php";

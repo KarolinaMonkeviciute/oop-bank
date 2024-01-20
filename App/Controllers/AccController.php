@@ -4,6 +4,7 @@ namespace Bank\App\Controllers;
 
 use Bank\App\App;
 use App\DB\FileBase;
+use Bank\App\Message;
 
 class AccController
 {
@@ -46,6 +47,7 @@ class AccController
             'code' => $code,
             'balance' => 0,
         ]);
+        Message::get()->set('success', 'Sąskaita sukurta');
 
         return App::redirect('accounts');
     }
@@ -54,6 +56,7 @@ class AccController
         $writer = new FileBase('accounts');
         $writer->delete($id);
 
+        Message::get()->set('danger', 'Sąskaita ištrinta');
         return App::redirect('accounts');
     }
 
@@ -74,6 +77,8 @@ class AccController
         $account = $writer->show($id);
         $account->balance += $add;
         $writer->update($id, $account);
+
+        Message::get()->set('info', 'Lėšos pridėtos');
         return App::redirect('accounts'); 
     
     }
@@ -93,7 +98,8 @@ class AccController
         $account = $writer->show($id);
         $account->balance -= $withdraw;
         $writer->withdrawupd($id, $account);
+
+        Message::get()->set('info', 'Lėšos nuskaičiuotos');
         return App::redirect('accounts'); 
-    
     }
 }
