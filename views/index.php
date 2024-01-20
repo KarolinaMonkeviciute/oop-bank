@@ -8,7 +8,10 @@
                     <b>Vardas</b>
                     </div>
                     <div class="col-2">
-                    <b>Pavardė</b>
+                        <form action="<?= URL ?>/accounts/" method="get">
+                            <input type="hidden" name="sort" value="<?= $sortValue ?>">
+                            <button type="submit" class="sort">Pavardė</button>
+                        </form>
                     </div>
                     <div class="col-2">
                     <b>Sąskaitos numeris</b>
@@ -23,7 +26,6 @@
             </div>
         </li>
       <?php foreach ($accounts as $account) : ?>
-        <?php print_r($account); ?>
          <li class="list-group-item">
             <div class="container">
                 <div class="row">
@@ -44,6 +46,7 @@
                     </div>
                     <div class="col-2">
                     <a href="<?= URL ?>/edit/<?= $account->id ?>" class="btn btn-warning mb-1">Pridėti</a>
+                    <a href="<?= URL ?>/withdraw/<?= $account->id ?>" class="btn btn-warning mb-1">Nuskaičiuoti</a>
                         <form action="<?= URL ?>/destroy/<?= $account->id ?>" method="post">
                             <button class="btn btn-danger">Ištrinti</button>
                         </form>

@@ -8,6 +8,7 @@ class App
 {
     static public function run(){
         $server = $_SERVER['REQUEST_URI'];
+        $server = preg_replace('/\?.*$/', '', $server);
         $url = explode('/', $server);
         array_shift($url);
 
@@ -34,6 +35,12 @@ class App
         }
         if($method == 'POST' && count($url) == 2 && $url[0] == 'update'){
             return (new AccController)->update($url[1], $_POST);
+        }
+        if($method == 'GET' && count($url) == 2 && $url[0] == 'withdraw'){
+            return (new AccController)->withdraw($url[1]);
+        }
+        if($method == 'POST' && count($url) == 2 && $url[0] == 'withdrawupd'){
+            return (new AccController)->withdrawupd($url[1], $_POST);
         }
 
         return '<h1>404<h1>';

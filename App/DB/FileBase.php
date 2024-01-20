@@ -6,7 +6,7 @@ use App\DB\DataBase;
 
 class FileBase implements DataBase
 {
-    private $file, $data, $index, $save = true;
+    private $indexFile, $file, $data, $index, $save = true;
 
     public function __construct($name){
         $this->file = ROOT.'data/'.$name.'.json';
@@ -36,6 +36,19 @@ class FileBase implements DataBase
     }
 
     public function update(int $id, object $data): bool{
+        $this->save = true;
+        foreach($this->data as $key => $value){
+            if($value->id == $id){
+                $data->id = $id;
+                $this->data[$key] = $data;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function withdrawupd(int $id, object $data): bool{
+        $this->save = true;
         foreach($this->data as $key => $value){
             if($value->id == $id){
                 $data->id = $id;
