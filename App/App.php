@@ -4,6 +4,8 @@ namespace Bank\App;
 
 use Bank\App\Controllers\AccController;
 use Bank\App\Message;
+use Bank\App\Controllers\LoginController;
+use Bank\App\Auth;
 
 class App
 {
@@ -19,6 +21,18 @@ class App
     static private function router($url){
         $method = $_SERVER['REQUEST_METHOD'];
 
+        if($method == 'GET' && count($url) == 1 && $url[0] == 'login'){
+            return (new LoginController)->index();
+        }
+        if($method == 'POST' && count($url) == 1 && $url[0] == 'login'){
+            return (new LoginController)->login($_POST);
+        }
+        if($method == 'POST' && count($url) == 1 && $url[0] == 'logout'){
+            return (new LoginController)->logout();
+        }
+        if(!Auth::get()->getStatus()){
+            return self::redirect('login');
+        }
         if($method == 'GET' && count($url) == 1 && $url[0] == 'accounts'){
             return (new AccController)->index($_GET);
         }
@@ -50,6 +64,7 @@ class App
     static public function view($view, $data=[]){
         extract($data);
         $msg = Message::get()->show();
+        $auth = Auth::get()->getStatus();
         ob_start();
         require ROOT.'views/top.php';
         require ROOT."views/$view.php";
