@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-info p-3">
+<nav class="navbar navbar-expand-lg navbar-light p-3">
       <div class="container-fluid">
-        <a class="navbar-brand" href="<?= URL?>/accounts">BANK</a>
+        <a class="navbar-brand" href="<?= URL?>/accounts">BANKERINIS OOP Bankas</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,7 +29,7 @@
       </div>
       <div>
           <form action="<?= URL ?>/logout" method="post">
-            <button class="btn btn-outline-success">Atsijungti</button>
+            <button class="btn btn-outline-light">Atsijungti</button>
           </form>
       </div>
     </nav>

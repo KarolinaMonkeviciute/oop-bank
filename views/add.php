@@ -6,7 +6,7 @@
             <input type="text" name="balance" value="<?=$account->balance?>"readonly></input>
                 <div class="form-container">
                     <input type="number" name="add" placeholder="Įveskite suma"></input>
-                    <button type="submit">Pridėti</button>
+                    <button type="submit" class="btn btn-primary d-block">Pridėti</button>
                 </div>
         </form>
 </body>

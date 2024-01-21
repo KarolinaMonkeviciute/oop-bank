@@ -1,5 +1,5 @@
 <?php require ROOT.'/views/nav.php' ?>
-<h1>Visos sąskaitos</h1>
+<h1 class="index">Visos sąskaitos</h1>
 <ul class="list-group list-group-flush mt-3">
         <li class="list-group-item">
             <div class="container">
@@ -28,7 +28,7 @@
       <?php foreach ($accounts as $account) : ?>
          <li class="list-group-item">
             <div class="container">
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-2">
                         <?= $account->fname; ?>
                     </div>
@@ -45,10 +45,10 @@
                         <?= $account->balance; ?> EUR
                     </div>
                     <div class="col-2">
-                    <a href="<?= URL ?>/edit/<?= $account->id ?>" class="btn btn-warning mb-1">Pridėti</a>
-                    <a href="<?= URL ?>/withdraw/<?= $account->id ?>" class="btn btn-warning mb-1">Nuskaičiuoti</a>
-                        <form action="<?= URL ?>/destroy/<?= $account->id ?>" method="post">
-                            <button class="btn btn-danger">Ištrinti</button>
+                    <a href="<?= URL ?>/edit/<?= $account->id ?>" class="btn btn-success mb-1 py-1"><span class="material-symbols-outlined">add</span></a>
+                    <a href="<?= URL ?>/withdraw/<?= $account->id ?>" class="btn btn-warning mb-1 py-1"><span class="material-symbols-outlined">remove</span></a>
+                        <form action="<?= URL ?>/destroy/<?= $account->id ?>" method="post" class="d-inline">
+                            <button class="btn btn-danger py-1"><span class="material-symbols-outlined">close</span></button>
                         </form>
                     </div>
                 </div>

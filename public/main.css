@@ -11991,27 +11991,6 @@ h1, .h1 {
   padding-bottom: 13px;
 }
 
-h1:before, .h1:before {
-  background-color: #c50000;
-  content: "";
-  display: block;
-  height: 3px;
-  width: 75px;
-  margin-bottom: 5px;
-}
-
-h1:after, .h1:after {
-  background-color: #c50000;
-  content: "";
-  display: block;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  width: 75px;
-  margin-bottom: 0.25em;
-}
-
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -12040,7 +12019,7 @@ input {
 
 button {
   display: block;
-  background-color: #4caf50;
+  background-color: #7f6b8d;
   color: #fff;
   padding: 10px 15px;
   border: none;
@@ -12070,4 +12049,90 @@ button:hover {
   font-size: 16px;
   font-weight: bold;
   padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #e4e7e9;
+}
+
+header {
+  position: relative;
+  background-color: #e4e7e9;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+header h1, header .h1 {
+  font-size: 2em;
+  margin: 0;
+  letter-spacing: 2px;
+  animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #3498db, #2ecc71);
+  -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  z-index: -1;
+  animation: gradientSlide 1s ease-out;
+}
+
+@keyframes gradientSlide {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.btn-primary {
+  background-color: #7f6b8d;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in;
+}
+
+.btn-primary:hover {
+  background-color: #684e77; /* Darker color on hover */
+}
+
+.navbar {
+  background-color: #684e77; /* Updated color for the navbar */
+  border-radius: 10px; /* Added border-radius */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added box shadow for depth */
+}
+
+.nav-link {
+  color: #fff;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #e4e7e9; /* Lighter color on hover */
+}
+
+.index {
+  padding-top: 1rem;
 }
