@@ -28,6 +28,7 @@ class FileBase implements DataBase
     }
 
     public function create(object $data): int{
+        $this->save = true;
         $id = $this->index;
         $this->index++;
         $data->id = $id;
@@ -60,6 +61,7 @@ class FileBase implements DataBase
     }
 
     public function delete(int $id): bool{
+        $this->save = true;
         foreach($this->data as $key => $value){
             if($value->id == $id){
                 unset($this->data[$key]);

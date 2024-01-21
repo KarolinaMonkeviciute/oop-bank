@@ -3,6 +3,6 @@
     <input type="text" name="fname" placeholder="Vardas" requred>
     <input type="text" name="lname" placeholder="Pavardė" requred>
     <input type="text" name="number" placeholder="Sąskaitos numeris" value="<?='LT'.rand(100000000000000000, 999999999999999999)?>"readonly>
-    <input type="text" name="code" placeholder="Asmens kodas" requred>
+    <input type="number" name="code" placeholder="Asmens kodas" requred>
     <button type="submit">Sukurti</button>
 </form>
