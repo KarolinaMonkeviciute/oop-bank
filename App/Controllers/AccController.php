@@ -13,7 +13,7 @@ class AccController
         return App::view('create');
     }
     public function index($request){
-        $writer = match(DB){
+        $writer = match(DB) {
             'file' => new FileBase('accounts'),
             'maria' => new MariaBase('accounts'),
         };
@@ -49,7 +49,7 @@ class AccController
             return App::redirect('create');
         }
 
-        $writer = match(DB){
+        $writer = match(DB) {
             'file' => new FileBase('accounts'),
             'maria' => new MariaBase('accounts'),
         };
@@ -90,7 +90,7 @@ class AccController
     }
 
     public function destroy($id){
-        $writer = match(DB){
+        $writer = match(DB) {
             'file' => new FileBase('accounts'),
             'maria' => new MariaBase('accounts'),
         };
@@ -105,7 +105,7 @@ class AccController
     }
 
     public function edit($id){
-        $writer = match(DB){
+        $writer = match(DB) {
             'file' => new FileBase('accounts'),
             'maria' => new MariaBase('accounts'),
         };
@@ -124,7 +124,7 @@ class AccController
             return App::redirect('accounts'); 
         }
         $add = intval($add);    
-        $writer = match(DB){
+        $writer = match(DB) {
             'file' => new FileBase('accounts'),
             'maria' => new MariaBase('accounts'),
         };
@@ -137,7 +137,7 @@ class AccController
     
     }
     public function withdraw($id){
-        $writer = match(DB){
+        $writer = match(DB) {
             'file' => new FileBase('accounts'),
             'maria' => new MariaBase('accounts'),
         };
@@ -151,7 +151,7 @@ class AccController
     public function withdrawupd($id, $request){
         $withdraw = $request['withdraw'];
         $withdraw = intval($withdraw);    
-        $writer = match(DB){
+        $writer = match(DB) {
             'file' => new FileBase('accounts'),
             'maria' => new MariaBase('accounts'),
         };

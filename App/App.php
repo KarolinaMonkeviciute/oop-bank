@@ -58,7 +58,7 @@ class App
             return (new AccController)->withdrawupd($url[1], $_POST);
         }
 
-        return '<h1 class="404">404<h1>';
+        return '<h1>404<h1>';
     }
 
     static public function view($view, $data=[]){

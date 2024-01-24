@@ -6,7 +6,7 @@ use Bank\App\Auth;
 
 session_start();
 
-define('DB', 'maria');
+define('DB', 'file');
 
 require '../vendor/autoload.php';
 
