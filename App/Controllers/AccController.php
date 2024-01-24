@@ -4,6 +4,7 @@ namespace Bank\App\Controllers;
 
 use Bank\App\App;
 use App\DB\FileBase;
+use App\DB\MariaBase;
 use Bank\App\Message;
 
 class AccController
@@ -12,7 +13,11 @@ class AccController
         return App::view('create');
     }
     public function index($request){
-        $writer = new FileBase('accounts');
+        $writer = match(DB){
+            'file' => new FileBase('accounts'),
+            'maria' => new MariaBase('accounts'),
+        };
+
         $accounts = $writer->showAll();
 
         $sort = $request['sort'] ?? null;
@@ -44,7 +49,10 @@ class AccController
             return App::redirect('create');
         }
 
-        $writer = new FileBase('accounts');
+        $writer = match(DB){
+            'file' => new FileBase('accounts'),
+            'maria' => new MariaBase('accounts'),
+        };
         $accounts = $writer->showAll();
 
         foreach($accounts as $account){
@@ -82,7 +90,10 @@ class AccController
     }
 
     public function destroy($id){
-        $writer = new FileBase('accounts');
+        $writer = match(DB){
+            'file' => new FileBase('accounts'),
+            'maria' => new MariaBase('accounts'),
+        };
         $account = $writer->show($id);
         if($account->balance != 0){
             Message::get()->set('danger', 'Negalima ištrinti sąskaitos kurioje yra lėšų');
@@ -94,7 +105,10 @@ class AccController
     }
 
     public function edit($id){
-        $writer = new FileBase('accounts');
+        $writer = match(DB){
+            'file' => new FileBase('accounts'),
+            'maria' => new MariaBase('accounts'),
+        };
         $account = $writer->show($id);
 
         return App::view('add', [
@@ -110,7 +124,10 @@ class AccController
             return App::redirect('accounts'); 
         }
         $add = intval($add);    
-        $writer = new FileBase('accounts');
+        $writer = match(DB){
+            'file' => new FileBase('accounts'),
+            'maria' => new MariaBase('accounts'),
+        };
         $account = $writer->show($id);
         $account->balance += $add;
         $writer->update($id, $account);
@@ -120,7 +137,10 @@ class AccController
     
     }
     public function withdraw($id){
-        $writer = new FileBase('accounts');
+        $writer = match(DB){
+            'file' => new FileBase('accounts'),
+            'maria' => new MariaBase('accounts'),
+        };
         $account = $writer->show($id);
 
         return App::view('withdraw', [
@@ -131,7 +151,10 @@ class AccController
     public function withdrawupd($id, $request){
         $withdraw = $request['withdraw'];
         $withdraw = intval($withdraw);    
-        $writer = new FileBase('accounts');
+        $writer = match(DB){
+            'file' => new FileBase('accounts'),
+            'maria' => new MariaBase('accounts'),
+        };
         $account = $writer->show($id);
 
         if($account->balance < $withdraw){

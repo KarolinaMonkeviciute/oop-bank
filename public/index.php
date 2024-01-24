@@ -6,6 +6,8 @@ use Bank\App\Auth;
 
 session_start();
 
+define('DB', 'maria');
+
 require '../vendor/autoload.php';
 
 define('ROOT', __DIR__.'/../');

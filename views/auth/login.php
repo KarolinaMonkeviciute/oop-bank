@@ -22,7 +22,7 @@
                             </div>
                         </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary">Prisijugnti</button>
+                        <button class="btn btn-primary">Prisijungti</button>
                     </div>
                 </div>
             </form>
