@@ -13,6 +13,12 @@ class AccController
         return App::view('create');
     }
     public function index($request){
+
+        if (!isset($_SESSION['selectedDB']) || isset($request['selectedDB']) && $request['selectedDB'] !== $_SESSION['selectedDB']) {
+           $_SESSION['selectedDB'] = $request['selectedDB'] ?? 'file';
+           header(header: "Refresh:0");
+        }
+
         $writer = match(DB) {
             'file' => new FileBase('accounts'),
             'maria' => new MariaBase('accounts'),

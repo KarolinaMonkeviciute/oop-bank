@@ -6,7 +6,11 @@ use Bank\App\Auth;
 
 session_start();
 
-define('DB', 'file');
+if(isset($_SESSION['selectedDB'])){
+    define('DB', $_SESSION['selectedDB']);
+} else {
+    define('DB', 'file');
+}
 
 require '../vendor/autoload.php';
 

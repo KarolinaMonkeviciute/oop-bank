@@ -1,4 +1,13 @@
 <?php require ROOT.'/views/nav.php' ?>
+
+<form method="post" action="<?= URL ?>/accounts">
+    <label for="selectedDB">DB:</label>
+    <select name="selectedDB">
+        <option value="file">File</option>
+        <option value="maria">MariaDB</option>
+    </select>
+    <button type="submit">Ok</button>
+</form>
 <h1 class="index">Visos sąskaitos</h1>
 
 <ul class="list-group list-group-flush mt-3">

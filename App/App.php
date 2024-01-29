@@ -36,6 +36,9 @@ class App
         if($method == 'GET' && count($url) == 1 && $url[0] == 'accounts'){
             return (new AccController)->index($_GET);
         }
+        if($method == 'POST' && count($url) == 1 && $url[0] == 'accounts'){
+            return (new AccController)->index($_POST);
+        }
         if($method == 'GET' && count($url) == 1 && $url[0] == 'create'){
             return (new AccController)->create();
         }
